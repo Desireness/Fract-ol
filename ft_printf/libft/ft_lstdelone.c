@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2025/02/05 14:03:43 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/02/05 14:03:44 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	printf("hola");
-	return (0);
+	if (!lst || !del)
+		return ;
+	del((*lst).content);
+	free(lst);
 }

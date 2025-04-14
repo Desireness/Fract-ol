@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2025/01/25 17:32:55 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/01/25 17:32:57 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+int	ft_isalpha(int c)
 {
-	printf("hola");
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
 	return (0);
 }

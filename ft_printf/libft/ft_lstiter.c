@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2025/02/05 14:03:49 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/02/05 14:03:50 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	printf("hola");
-	return (0);
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f((*lst).content);
+		lst = (*lst).next;
+	}
 }

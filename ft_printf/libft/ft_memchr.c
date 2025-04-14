@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2024/12/03 12:55:17 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/01/22 19:15:06 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	printf("hola");
-	return (0);
+	unsigned char	*ptr;
+	size_t			i;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)&ptr[i]);
+		i++;
+	}
+	return (NULL);
 }

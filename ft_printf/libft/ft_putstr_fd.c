@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student42.madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2025/01/21 16:45:21 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/01/22 16:07:38 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+void	ft_putstr_fd(char *s, int fd)
 {
-	printf("hola");
-	return (0);
+	if (!s)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2024/12/03 12:54:59 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/02/03 13:43:36 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+char	*ft_strrchr(const char *s, int c)
 {
-	printf("hola");
-	return (0);
+	const char	*last;
+
+	last = NULL;
+	while (*s)
+	{
+		if (*s == (char) c)
+		{
+			last = s;
+		}
+		s++;
+	}
+	if (*s == (char) c)
+		return ((char *)s);
+	return ((char *) last);
 }

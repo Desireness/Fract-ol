@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rauizqui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:26:32 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:37 by rauizqui         ###   ########.fr       */
+/*   Created: 2025/01/20 12:41:27 by rauizqui          #+#    #+#             */
+/*   Updated: 2025/01/22 17:24:01 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int main()
+void	*ft_memset(void *s, int c, size_t size)
 {
-	printf("hola");
-	return (0);
+	unsigned char		*r;
+	size_t				i;
+
+	i = 0;
+	r = (unsigned char *)s;
+	while (i < size)
+	{
+		r[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
