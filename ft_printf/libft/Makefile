@@ -6,7 +6,7 @@
 #    By: rauizqui <rauizqui@student42.madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 13:00:52 by rauizqui          #+#    #+#              #
-#    Updated: 2025/02/05 13:56:27 by rauizqui         ###   ########.fr        #
+#    Updated: 2025/04/17 21:08:24 by rauizqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = ft_isalpha.c \
       ft_isascii.c \
       ft_isprint.c \
       ft_strlen.c \
+      ft_atof.c \
       ft_memset.c \
       ft_bzero.c \
       ft_memcpy.c \

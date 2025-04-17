@@ -6,7 +6,7 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:47:22 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/16 16:25:03 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/17 21:54:05 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 #define START 0.0
 #define COLOR 0x00FFA500
 
-# include "../ft_printf.h"
-# include "./libft.h"
+# include "ft_printf/ft_printf.h"
+# include "ft_printf/libft/libft.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -51,17 +51,26 @@ typedef struct s_complex_data
 {
     double zr;
     double zi;
+    double ci;
+    double cr;
     double tmp;
     int iter;
 }   t_complex_data;
 
+typedef struct s_bounds
+{
+	double	left;
+	double	right;
+	double	top;
+	double	bottom;
+}	t_bounds;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 //void	my_mlx_pixel_put(t_data *data, int x, int y, int color, int size);
 void    draw_filled_square(t_data *img, int x_start, int y_start, int size, int color);
 
 
-void	complex_coords(int x, int y, double *cr, double *ci);
-void	mandelbrot_coords(t_data *img);
-int	mandelbrot_iterations(t_complex_data *data,double cr,  double ci, int max_iter);
+void    complex_coords(int x, int y, t_complex_data *data, t_bounds *b);
+void mandelbrot_coords(t_data *img, t_bounds *bounds);
+int     mandelbrot_iterations(t_complex_data *data, int max_iter);
 #endif
