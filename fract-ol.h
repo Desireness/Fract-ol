@@ -6,7 +6,7 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:47:22 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/17 21:54:05 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/04/20 18:13:38 by  rauizqui@s      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 
-#define WIDTH 800
-#define HEIGHT 800
+#define WIDTH 1092
+#define HEIGHT 1080
 
 #define LEFT -2.0
 #define RIGHT 1.0
@@ -55,6 +55,8 @@ typedef struct s_complex_data
     double cr;
     double tmp;
     int iter;
+    int x;
+    int y;
 }   t_complex_data;
 
 typedef struct s_bounds
@@ -73,4 +75,8 @@ void    draw_filled_square(t_data *img, int x_start, int y_start, int size, int 
 void    complex_coords(int x, int y, t_complex_data *data, t_bounds *b);
 void mandelbrot_coords(t_data *img, t_bounds *bounds);
 int     mandelbrot_iterations(t_complex_data *data, int max_iter);
+
+int julia_iterations(double zr, double zi, double cr, double ci);
+void	julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia);
+
 #endif
