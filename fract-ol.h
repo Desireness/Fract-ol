@@ -22,7 +22,7 @@
 #define RIGHT 1.0
 #define TOP 1.2
 #define BOTTOM -1.2
-#define MAX_ITER 100
+#define MAX_ITER 1001
 #define START 0.0
 #define COLOR 0x00FFA500
 #define ESC_KEY 65307
@@ -78,6 +78,9 @@ typedef struct s_events
 {
     void    *mlx;
     void    *win;
+    t_bounds *bounds;
+    t_data   *img;
+    t_complex_data julia;
 }   t_events;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -95,7 +98,10 @@ void	julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia);
 int color_gradient(int iter, int max_iter);
 int closeit(int keycode, t_events *events);
 //int handle_keypress(int keycode, t_events *events);
-//int handle_keypress(int keycode, void *param);
+int handle_keypress(int keycode, void *param);
 int handle_close(void *param);
+void zoom_at_point(t_bounds *bounds, int x, int y, double zoom_factor);
+int handle_mouse(int button, int x, int y, void *param);
+int handle_mouse_julia(int button, int x, int y, void *param);
 
 #endif

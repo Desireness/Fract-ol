@@ -66,7 +66,7 @@ int	mandelbrot_iterations(t_complex_data *data, int max_iter)
 	return data->iter;
 }
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -89,10 +89,12 @@ int	main(int ac, char **av)
 	bounds.bottom = ft_atof(av[4]);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot set");
-
 	events->mlx = mlx;
     events->win = mlx_win;
-
+	// Añade esto después de tus otros mlx_hook en el main
+	events->bounds = &bounds;   // Asignar el puntero a bounds
+	events->img = &img;         // Asignar el puntero a img
+	mlx_mouse_hook(mlx_win, handle_mouse, events);  // Registrar el evento del mouse
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
@@ -105,7 +107,7 @@ int	main(int ac, char **av)
 	//mlx_destroy_window(mlx, img.img);
 	mlx_loop(mlx);
 	return (0);
-}
+}*/
 
 /*int	main(int ac, char **av)
 {
