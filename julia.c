@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:46:56 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/21 14:13:05 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 23:02:37 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia)
 }*/
 
 
-int main(int ac, char **av)
+/*int main(int ac, char **av)
 {
     void    *mlx;
     void    *mlx_win;
@@ -175,4 +175,4 @@ int main(int ac, char **av)
     mlx_loop(mlx);
     free(events);
     return (0);
-}
+}*/

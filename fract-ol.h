@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
+/*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:47:22 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/21 17:14:46 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 23:14:13 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 
-#define WIDTH 1092
-#define HEIGHT 1080
+#define WIDTH 800
+#define HEIGHT 800
 
 #define LEFT -2.0
 #define RIGHT 1.0
@@ -81,6 +81,7 @@ typedef struct s_events
     t_bounds *bounds;
     t_data   *img;
     t_complex_data julia;
+    char     *title;
 }   t_events;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -103,5 +104,12 @@ int handle_close(void *param);
 void zoom_at_point(t_bounds *bounds, int x, int y, double zoom_factor);
 int handle_mouse(int button, int x, int y, void *param);
 int handle_mouse_julia(int button, int x, int y, void *param);
+
+int		check_args(int ac, char **av, t_complex_data *julia);
+void	exit_with_error(char *message, t_events *events);
+void	init_bounds(t_bounds *bounds, int fractal_type);
+void	init_mlx_resources(t_events *events, char *title);
+void	setup_hooks(t_events *events, int fractal_type);
+char    *get_title(int fractal_type);
 
 #endif
