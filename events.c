@@ -24,13 +24,21 @@ int handle_keypress(int keycode, void *param)
     return (0);
 }
 
-int closeit(int keycode, t_events *events)
+/*int closeit(int keycode, t_events *events)
 {
-	events = malloc(sizeof(t_events));
-	if (!events)
-		return (1);
-	keycode = handle_keypress(65307, events->win);
+	//events = malloc(sizeof(t_events));
+	//if (!events)
+	//	return (1);
+	void (keycode);
+	handle_keypress(65307, events->win);
 	mlx_destroy_window(events->mlx, events->win);
 	return (0);
+}*/
+// Añade esto a events.c
+int handle_close(void *param)
+{
+    (void)param; // No necesitamos usar el parámetro
+    printf("Cerrando ventana con X\n"); // Para depuración
+    exit(0);
+    return (0);
 }
-

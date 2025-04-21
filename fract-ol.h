@@ -95,6 +95,7 @@ void	julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia);
 int color_gradient(int iter, int max_iter);
 int closeit(int keycode, t_events *events);
 //int handle_keypress(int keycode, t_events *events);
-int handle_keypress(int keycode, void *param);
+//int handle_keypress(int keycode, void *param);
+int handle_close(void *param);
 
 #endif

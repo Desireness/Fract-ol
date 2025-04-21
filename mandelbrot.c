@@ -80,6 +80,7 @@ int	main(int ac, char **av)
 	if (ac <= 1 || ac < 5)
 	{
 		write(2, "Usage: ./fract-ol LEFT RIGHT TOP BOTTOM\n", 41);
+		free(events);
 		return (1);
 	}
 	bounds.left = ft_atof(av[1]);
@@ -88,13 +89,17 @@ int	main(int ac, char **av)
 	bounds.bottom = ft_atof(av[4]);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot set");
+
+	events->mlx = mlx;
+    events->win = mlx_win;
+
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	mandelbrot_coords(&img, &bounds);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_hook(mlx_win, 2, 1L<<0, handle_keypress, NULL);
-	mlx_hook(mlx_win, 17, 0, closeit, NULL);
+	mlx_hook(mlx_win, 17, 0, handle_close, NULL);
 	//mlx_hook(mlx_win, 17, 0, closeit, NULL);
 	//mlx_destroy_image(mlx, mlx_win);
 	//mlx_destroy_window(mlx, img.img);
