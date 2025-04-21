@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 # Archivos fuente y objeto
-SRC = colors.c events.c fract-ol.c render.c utils.c mandelbrot.c pixel_input.c julia.c
+SRC = colors.c events.c fract-ol.c utils.c mandelbrot.c pixel_input.c julia.c
 OBJ = $(SRC:.c=.o)
 
 # Nombre del ejecutable

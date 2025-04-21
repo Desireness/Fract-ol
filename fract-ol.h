@@ -6,7 +6,7 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:47:22 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/21 13:58:39 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 17:14:46 by  rauizqui@s      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 #define MAX_ITER 100
 #define START 0.0
 #define COLOR 0x00FFA500
+#define ESC_KEY 65307
+//#define EKIS 17
+#define ZOOM_IN 4
+#define ZOOM_OUT 5
+#define ZOOM_FACTOR 0.9
 
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
@@ -41,10 +46,11 @@ typedef struct  s_data
 {
     void    *img;
     char    *addr;
+   // void    *mlx;
+   // void    *win;
     int     bits_per_pixel;
     int     line_length;
     int     endian;
- 
 }       t_data;
 
 typedef struct s_complex_data
@@ -65,7 +71,14 @@ typedef struct s_bounds
 	double	right;
 	double	top;
 	double	bottom;
+    int     *bounds;
 }	t_bounds;
+
+typedef struct s_events
+{
+    void    *mlx;
+    void    *win;
+}   t_events;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 //void	my_mlx_pixel_put(t_data *data, int x, int y, int color, int size);
@@ -80,5 +93,8 @@ int julia_iterations(double zr, double zi, double cr, double ci);
 void	julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia);
 
 int color_gradient(int iter, int max_iter);
+int closeit(int keycode, t_events *events);
+//int handle_keypress(int keycode, t_events *events);
+int handle_keypress(int keycode, void *param);
 
 #endif
