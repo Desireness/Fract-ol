@@ -6,21 +6,24 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:46:56 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/20 18:11:08 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 14:13:05 by  rauizqui@s      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract-ol.h"
 
-void julia_complex_coords(int x, int y, t_complex_data *data, t_bounds *bounds) {
+void julia_complex_coords(int x, int y, t_complex_data *data, t_bounds *bounds)
+{
     data->zr = bounds->left + ((double)x / WIDTH) * (bounds->right - bounds->left);
 	data->zi = bounds->top - ((double)y / HEIGHT) * (bounds->top - bounds->bottom);
 }
 
-int julia_iterations(double zr, double zi, double cr, double ci) {
-    int iter = 0;
+int julia_iterations(double zr, double zi, double cr, double ci)
+{
+    int iter;
     double tmp;
 
+	iter = 0;
     while (zr * zr + zi * zi <= 4.0 && iter < MAX_ITER)
 	{
         tmp = zr * zr - zi * zi + cr;
@@ -28,7 +31,6 @@ int julia_iterations(double zr, double zi, double cr, double ci) {
         zr = tmp;
         iter++;
     }
-
     return iter;
 }
 
@@ -36,30 +38,20 @@ void julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia)
 {
     t_complex_data data;
     int y = 0;
-
+    int iter;
+    int color;
+    
     while (y < HEIGHT)
     {
         int x = 0;
         while (x < WIDTH)
         {
-            // Calcular las coordenadas complejas
             julia_complex_coords(x, y, &data, bounds);
-
-            // Calcular el número de iteraciones
-            int iter = julia_iterations(data.zr, data.zi, julia->cr, julia->ci);
-
-            // Determinar el color basado en las iteraciones
-            int color;
-			if (iter == MAX_ITER)
-				color = 0x000000; // Negro para puntos dentro del conjunto
-			else if (iter > MAX_ITER * 0.75)
-				color = 0xFF0000; // Rojo para puntos cercanos al borde
-			else if (iter > MAX_ITER * 0.5)
-				color = 0x00FF00; // Verde para puntos más alejados
-			else if (iter > MAX_ITER * 0.25)
-				color = 0x0000FF; // Azul para puntos aún más alejados
-			else
-				color = 0xFFFFFF; // Blanco para puntos muy alejados
+            iter = julia_iterations(data.zr, data.zi, julia->cr, julia->ci);
+            if (iter == MAX_ITER)
+                color = 0x000000; // Negro para puntos dentro del conjunto
+            else
+                color = color_gradient(iter, MAX_ITER);
             my_mlx_pixel_put(img, x, y, color);
 
             x++;
@@ -68,7 +60,7 @@ void julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia)
     }
 }
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
     void	*mlx;
     void	*mlx_win;
@@ -88,7 +80,7 @@ int	main(int ac, char **av)
     julia.cr = atof(av[1]);
     julia.ci = atof(av[2]);
 
-    printf("Julia params: cr=%f, ci=%f\n", julia.cr, julia.ci);
+    //printf("Julia params: cr=%f, ci=%f\n", julia.cr, julia.ci);
 
     mlx = mlx_init();
     if (!mlx)
@@ -113,4 +105,4 @@ int	main(int ac, char **av)
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     mlx_loop(mlx);
     return (0);
-}
+}*/

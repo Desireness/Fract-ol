@@ -6,7 +6,7 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:47:22 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/20 18:13:38 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 13:58:39 by  rauizqui@s      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ int     mandelbrot_iterations(t_complex_data *data, int max_iter);
 
 int julia_iterations(double zr, double zi, double cr, double ci);
 void	julia_coords(t_data *img, t_bounds *bounds, t_complex_data *julia);
+
+int color_gradient(int iter, int max_iter);
 
 #endif

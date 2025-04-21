@@ -6,7 +6,7 @@
 /*   By:  rauizqui@student42.madrid.com <rauizqu    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:41:59 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/04/20 17:17:22 by  rauizqui@s      ###   ########.fr       */
+/*   Updated: 2025/04/21 14:12:55 by  rauizqui@s      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ void	complex_coords(int x, int y, t_complex_data *data, t_bounds *b)
 {
 	data->cr = b->left + x * ((b->right - b->left) / WIDTH);
 	data->ci = b->top - y *((b->top - b->bottom)/ HEIGHT);
-	printf("Mapped zr: %f, zi: %f\n", data->zr, data->zi);
+	///printf("Mapped zr: %f, zi: %f\n", data->zr, data->zi);
 	
 }
+
 void mandelbrot_coords(t_data *img, t_bounds *bounds)
 {
     int     x;
     int     y;
     t_complex_data data;
+	//int iter;
+	int color;
 
     y = 0;
     while (y < HEIGHT)
@@ -36,12 +39,10 @@ void mandelbrot_coords(t_data *img, t_bounds *bounds)
         {
             complex_coords(x, y, &data, bounds);
             data.iter = mandelbrot_iterations(&data, MAX_ITER);
-            int color;
             if (data.iter == MAX_ITER)
-                color = 0x00ff8000;
-            else
                 color = 0x00000000;
-            
+            else
+                color = color_gradient(data.iter, MAX_ITER);
             my_mlx_pixel_put(img, x, y, color);
             x++;
         }
@@ -65,7 +66,7 @@ int	mandelbrot_iterations(t_complex_data *data, int max_iter)
 	return data->iter;
 }
 
-/*int	main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -90,5 +91,4 @@ int	mandelbrot_iterations(t_complex_data *data, int max_iter)
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);
-}*/
-
+}
